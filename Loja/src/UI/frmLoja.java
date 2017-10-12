@@ -410,7 +410,7 @@ public class frmLoja extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Loja lj = new Loja();
         lj.setCNPJ(cnpj_loja.getText());
-        lj.setIE(Long.parseLong(ie_loja.getText()));
+        lj.setIE(ie_loja.getText());
         lj.setCOD(Integer.parseInt(cod_loja.getText()));
         if ((cnpj_loja.getText().isEmpty()) || (ie_loja.getText().isEmpty()) || (cod_loja.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha algum dos seguintes campos: CNPJ, IE ou Telefone", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
@@ -453,7 +453,7 @@ public class frmLoja extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Loja lj = new Loja();
         lj.setCNPJ(cnpj_loja.getText());
-        lj.setIE(Long.parseLong(ie_loja.getText()));
+        lj.setIE(ie_loja.getText());
         lj.setRAZAO(razao_loja.getText());
         lj.setNOME(nome_loja.getText());
         lj.setEND(end_loja.getText());
@@ -479,7 +479,7 @@ public class frmLoja extends javax.swing.JInternalFrame {
         Loja lj = new Loja();
         lj.setCOD(Integer.parseInt(cod_loja.getText()));
         lj.setCNPJ(cnpj_loja.getText());
-        lj.setIE(Long.parseLong(ie_loja.getText()));
+        lj.setIE(ie_loja.getText());
         lj.setRAZAO(razao_loja.getText());
         lj.setNOME(nome_loja.getText());
         lj.setEND(end_loja.getText());

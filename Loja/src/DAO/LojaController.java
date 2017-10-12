@@ -28,7 +28,7 @@ public class LojaController {
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
             ps.setString(1, loja.getCNPJ());
-            ps.setLong(2, loja.getIE());
+            ps.setString(2, loja.getIE());
             ps.setString(3, loja.getRAZAO());
             ps.setString(4, loja.getNOME());
             ps.setString(5, loja.getEND());
@@ -51,7 +51,7 @@ public class LojaController {
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
             ps.setString(1, loja.getCNPJ());
-            ps.setLong(2, loja.getIE());
+            ps.setString(2, loja.getIE());
             ps.setString(3, loja.getRAZAO());
             ps.setString(4, loja.getNOME());
             ps.setString(5, loja.getEND());
@@ -74,7 +74,7 @@ public class LojaController {
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
             ps.setString(1, loja.getCNPJ());
-            ps.setLong(2, loja.getIE());
+            ps.setString(2, loja.getIE());
             ps.setInt(3, loja.getCOD());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exclusão do cadastro da empresa " + loja.getCNPJ() + " realizada com sucesso!","Aviso - Cadastro Loja",JOptionPane.INFORMATION_MESSAGE, ok);

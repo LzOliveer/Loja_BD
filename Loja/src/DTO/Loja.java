@@ -12,7 +12,7 @@ package DTO;
 public class Loja {
     public int COD;
     public String CNPJ;
-    public long IE;
+    public String IE;
     public String FONE;
     public String RAZAO;
     public String NOME;
@@ -50,14 +50,14 @@ public class Loja {
     /**
      * @return the IE
      */
-    public long getIE() {
+    public String getIE() {
         return IE;
     }
 
     /**
      * @param IE the IE to set
      */
-    public void setIE(long IE) {
+    public void setIE(String IE) {
         this.IE = IE;
     }
 
