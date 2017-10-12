@@ -411,7 +411,8 @@ public class frmLoja extends javax.swing.JInternalFrame {
         Loja lj = new Loja();
         lj.setCNPJ(cnpj_loja.getText());
         lj.setIE(Long.parseLong(ie_loja.getText()));
-        if ((cnpj_loja.getText().isEmpty()) || (ie_loja.getText().isEmpty())) {
+        lj.setCOD(Integer.parseInt(cod_loja.getText()));
+        if ((cnpj_loja.getText().isEmpty()) || (ie_loja.getText().isEmpty()) || (cod_loja.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Por favor, preencha algum dos seguintes campos: CNPJ, IE ou Telefone", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
         } else {
 
@@ -476,6 +477,7 @@ public class frmLoja extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Loja lj = new Loja();
+        lj.setCOD(Integer.parseInt(cod_loja.getText()));
         lj.setCNPJ(cnpj_loja.getText());
         lj.setIE(Long.parseLong(ie_loja.getText()));
         lj.setRAZAO(razao_loja.getText());
@@ -484,7 +486,7 @@ public class frmLoja extends javax.swing.JInternalFrame {
         lj.setFONE(fone_loja.getText());
         lj.setSITE(site_loja.getText());
 
-        if ((cnpj_loja.getText().isEmpty()) || (ie_loja.getText().isEmpty()) || (razao_loja.getText().isEmpty()) || (nome_loja.getText().isEmpty()) || (end_loja.getText().isEmpty()) || (fone_loja.getText().isEmpty())) {
+        if ((cod_loja.getText().isEmpty()) || (cnpj_loja.getText().isEmpty()) || (ie_loja.getText().isEmpty()) || (razao_loja.getText().isEmpty()) || (nome_loja.getText().isEmpty()) || (end_loja.getText().isEmpty()) || (fone_loja.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios. Favor preencher todos os campos", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
         } else {
 
