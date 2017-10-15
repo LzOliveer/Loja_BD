@@ -6,6 +6,8 @@
 package UI;
 
 import DAO.Conexao;
+import DAO.FuncController;
+import DTO.Funcionario;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,6 +64,18 @@ public class frmFuncionarios extends javax.swing.JInternalFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(frmLoja.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void completa_frm(){
+        int seleciona = tab_func.getSelectedRow();
+        cod_func.setText(tab_func.getModel().getValueAt(seleciona, 0).toString());
+        cpf_func.setText(tab_func.getModel().getValueAt(seleciona, 4).toString());
+        rg_func.setText(tab_func.getModel().getValueAt(seleciona, 5).toString());
+        nct_func.setText(tab_func.getModel().getValueAt(seleciona, 3).toString());
+        nome_func.setText(tab_func.getModel().getValueAt(seleciona, 1).toString());
+        end_func.setText(tab_func.getModel().getValueAt(seleciona, 7).toString());
+        tel_func.setText(tab_func.getModel().getValueAt(seleciona, 6).toString());
+        sexo_func.setSelectedItem(tab_func.getModel().getValueAt(seleciona, 2).toString());
     }
 
     /**
@@ -127,6 +141,11 @@ public class frmFuncionarios extends javax.swing.JInternalFrame {
 
             }
         ));
+        tab_func.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab_funcMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tab_func);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -180,7 +199,7 @@ public class frmFuncionarios extends javax.swing.JInternalFrame {
         jLabel8.setText("Telefone");
 
         try {
-            tel_func.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-##")));
+            tel_func.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -195,13 +214,28 @@ public class frmFuncionarios extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/account-plus.png"))); // NOI18N
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/account-edit.png"))); // NOI18N
         jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/account-remove.png"))); // NOI18N
         jButton3.setText("Excluir");
         jButton3.setToolTipText("");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Limpar.png"))); // NOI18N
         jButton4.setText("Limpar");
@@ -355,6 +389,92 @@ public class frmFuncionarios extends javax.swing.JInternalFrame {
         sexo_func.setSelectedItem("Selecione");
         lista_func();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void tab_funcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_funcMouseClicked
+        completa_frm();
+    }//GEN-LAST:event_tab_funcMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Funcionario fu = new Funcionario();
+        fu.setCpf(cpf_func.getText());
+        fu.setRg(rg_func.getText());
+        fu.setNct(nct_func.getText());
+        fu.setNome(nome_func.getText());
+        fu.setEnd(end_func.getText());
+        fu.setFone(tel_func.getText());
+        fu.setSexo(sexo_func.getSelectedItem().toString());
+        
+        if ((cpf_func.getText().isEmpty()) || (rg_func.getText().isEmpty()) || (nct_func.getText().isEmpty()) || (nome_func.getText().isEmpty()) || (end_func.getText().isEmpty()) || (tel_func.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios. Favor preencher todos os campos", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
+        }
+        else {
+
+            try {
+
+                FuncController fc = new FuncController();
+                fc.cadastra(fu);
+                lista_func();
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(frmLoja.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Funcionario fu = new Funcionario();
+        fu.setCod(Integer.parseInt(cod_func.getText()));
+        fu.setCpf(cpf_func.getText());
+        fu.setRg(rg_func.getText());
+        fu.setNct(nct_func.getText());
+        fu.setNome(nome_func.getText());
+        fu.setEnd(end_func.getText());
+        fu.setFone(tel_func.getText());
+        fu.setSexo(sexo_func.getSelectedItem().toString());
+        if ((sexo_func.getSelectedItem().equals("Selecione")) || (cod_func.getText().isEmpty()) || (cpf_func.getText().isEmpty()) || (rg_func.getText().isEmpty()) || (nct_func.getText().isEmpty()) || (nome_func.getText().isEmpty()) || (end_func.getText().isEmpty()) || (tel_func.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios. Favor preencher todos os campos", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
+        }
+        else {
+
+            try {
+
+                FuncController fc = new FuncController();
+                fc.edita(fu);
+                lista_func();
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(frmLoja.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Funcionario fu = new Funcionario();
+        fu.setCpf(cpf_func.getText());
+        fu.setRg(rg_func.getText());
+        fu.setNome(nome_func.getText());
+        fu.setCod(Integer.parseInt(cod_func.getText()));
+        if ((cod_func.getText().isEmpty()) || (cpf_func.getText().isEmpty()) || (rg_func.getText().isEmpty()) || (nome_func.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios. Favor preencher todos os campos", "Aviso", JOptionPane.INFORMATION_MESSAGE, aviso);
+        }
+        else {
+
+            try {
+
+                FuncController fc = new FuncController();
+                fc.exclui(fu);
+                cod_func.setText("");
+                cpf_func.setText("");
+                rg_func.setText("");
+                nct_func.setText("");
+                nome_func.setText("");
+                end_func.setText("");
+                tel_func.setText("");
+                sexo_func.setSelectedItem("Selecione");
+                lista_func();
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(frmLoja.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

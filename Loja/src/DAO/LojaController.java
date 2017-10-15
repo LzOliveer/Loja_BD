@@ -39,7 +39,7 @@ public class LojaController {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(LojaController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erro, cadastro não realizado! Verifique os dados informados.", "Erro", JOptionPane.ERROR_MESSAGE, erro);
+            JOptionPane.showMessageDialog(null,  "Erro, cadastro não realizado! Verifique os dados informados.\n\n" + "Erro SQL:\n" + ex, "Erro - Cadastro de Lojas", JOptionPane.ERROR_MESSAGE, erro);
             return false;
         }
 
@@ -63,7 +63,7 @@ public class LojaController {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(LojaController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erro, edição do cadastro não realizada! Verifique os dados informados.", "Erro", JOptionPane.ERROR_MESSAGE, erro);
+            JOptionPane.showMessageDialog(null,  "Erro, edição do cadastro não realizada! Verifique os dados informados.\n\n" + "Erro SQL:\n" + ex, "Erro - Cadastro de Lojas", JOptionPane.ERROR_MESSAGE, erro);
             return false;
         }
     }
@@ -81,7 +81,7 @@ public class LojaController {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(LojaController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erro, exclusão do cadastro não realizada! Verifique os dados informados.", "Erro", JOptionPane.ERROR_MESSAGE, erro);
+            JOptionPane.showMessageDialog(null,  "Erro, exclusão do cadastro não realizada! Verifique os dados informados.\n\n" + "Erro SQL:\n" + ex, "Erro - Cadastro de Lojas", JOptionPane.ERROR_MESSAGE, erro);
             return false;
         }
     }
